@@ -1,0 +1,9 @@
+#!upstart
+description "Tomee Server"
+
+start on startup
+stop on shutdown
+
+respawn
+
+exec sh -c "<%= node[:tomee][:dir] %>/bin/startup.sh 2>&1 >> <%= node[:tomee][:dir] %>/vagrant.log"
