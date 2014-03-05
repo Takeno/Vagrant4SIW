@@ -1,14 +1,14 @@
-@ECHO OFF
+@echo off
 
-ECHO Shutting down Vagrant VM...
+echo Shutting down Vagrant VM...
 vagrant halt
 
-IF errorlevel 1 (
-	ECHO FAILURE! Vagrant VM unresponsive...
-) ELSE (
-	ECHO Yessir! Vagrant is down.
+if errorlevel 1 (
+	echo FAILURE! Vagrant VM unresponsive...
+) else (
+	echo Yessir! Vagrant is down.
 )
 
 
-ECHO Press a key to continue...
+echo Press a key to continue...
 pause > nul
