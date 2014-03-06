@@ -79,3 +79,10 @@ $ exit # back to host's shell
 
 This error is caused by virtual machine which is not responding to Vagrant. To fix it, open Virtualbox and force shutdown of VM:
 ![Alt Text](http://i.imgur.com/RAX2st2.png)
+
+
+#### Problem #5: *The host path of the shared folder is missing: ./lib/*
+
+This problem is solved with the new version of project. To fix it without downloading again the project, you have to make a directory called **lib** near **www**.
+
+**From command line - for all platforms:** `mkdir lib`
