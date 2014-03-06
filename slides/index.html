@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<p>
+						<br>
+					</p>
+					<h1 class="h-slideshow-title notranslate">Virtualized Development<br>with<br>Vagrant<br>
+			</h1>
+				</section>
+				<section>
+					<h2>Why do you need virtualized environments?</h2>
+					<div align="left">
+						<ul>
+							<li>For students:</li>
+							<ul>
+								<li data-fragment-index="0" class="fragment">
+									<u>To do SIW Homeworks</u>
+								</li>
+								<li data-fragment-index="1" class="fragment">To understand and reproduce SIW scripts</li>
+								<li data-fragment-index="2" class="fragment">To install the most unstable software without compromising your computer</li>
+								<li data-fragment-index="3" class="fragment">To test your new virus which will let you gain control of the world</li>
+								<li data-fragment-index="4" class="fragment">To test multiple OS on the same machine</li>
+								<li data-fragment-index="5" class="fragment">... or just to emulate an OS in another OS in another OS in another OS ...</li>
+							</ul>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>
+			<i>Emulation</i> ?</h2>
+					<p>
+						<br>
+					</p>
+					<img style="width: 414.877px; height: 247.543px; max-height: none; max-width: none;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/matteomanchi/images/272971/emulation.jpg">
+					<img data-fragment-index="0" class="absolute-element fragment" style="width: 947.881px; height: 587.686px; max-height: none; max-width: none; position: absolute; z-index: 4; left: -1px; top: 73px;" src="http://blog.gwebtools.com/wp-content/uploads/2009/09/look-how-funny.jpg">
+				</section>
+				<section>
+					<h2>Why do you need virtualized environments?</h2>
+					<div align="left">
+						<ul>
+							<li>For solo developers:</li>
+							<ul>
+								<li data-fragment-index="0" class="fragment">To maintain consistency across multiple projects
+									<br>
+								</li>
+								<li data-fragment-index="1" class="fragment">To run multiple environments (Dev, Test, Staging)</li>
+								<li data-fragment-index="2" class="fragment">
+									To eliminates "works on my machine" excuse</li>
+							</ul>
+							<li data-fragment-index="3" class="fragment">For teams:</li>
+							<ul>
+								<li data-fragment-index="4" class="fragment">All above
+									<br>
+								</li>
+								<li data-fragment-index="5" class="fragment">Identical development environments</li>
+							</ul>
+							<li data-fragment-index="6" class="fragment">For companies:</li>
+							<ul>
+								<li data-fragment-index="7" class="fragment">All above</li>
+								<li data-fragment-index="8" class="fragment">Easier onboarding of new talent</li>
+							</ul>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>What do you need to start?</h2>
+					<div align="left">
+						<ul>
+							<li data-fragment-index="0" class="fragment">
+								<h3>
+						<img style="width: 80px; height: 80px; vertical-align: middle;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/matteomanchi/images/272977/VirtualBox.png">
+						Virtualbox
+					</h3>
+							</li>
+							<li data-fragment-index="1" class="fragment">
+								<h3>
+					   <img style="width: 80px; height: 80px; vertical-align: middle;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/matteomanchi/images/272979/vagrant_icon.png">
+					   Vagrant
+				   </h3>
+							</li>
+							<li data-fragment-index="2" class="fragment">
+								<h3>
+					   <img style="width: 80px; height: 80px; vertical-align: middle;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/matteomanchi/images/272987/pic-chef-logo.png">Chef
+			<i style="font-size: 24px;">But you don't have to install it.</i>
+			</h3>
+							</li>
+						</ul>
+					</div>
+
+
+
+
+				</section>
+				<section>
+					<h2>VirtualBOX<br>
+			</h2>
+					<p>
+						<br>
+					</p>
+					<p>
+						<br>
+					</p>
+					<div align="left">
+						<ul>
+							<li>
+								<a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a>
+								<br>
+							</li>
+							<li>It is a powerful virtualization product
+								<br>
+							</li>
+							<li>It supports a large number of guest OS</li>
+							<li>It is Open Source</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Vagrant</h2>
+					<p>
+						<br>
+					</p>
+					<div align="left">
+						<ul>
+							<li>Virtualized development environments made easy</li>
+							<li>Command line tool
+								<br>
+							</li>
+							<li>It's based on multiple products for virtualization (VirtualBox, VMWare, AWS, others...)</li>
+							<li>It can use Puppet or Chef as provisioners. <i>We will come back on this point some slides later</i>
+								<br>
+							</li>
+							<li>It is FREE and Open Source
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Vagrant "How to"</h2>
+					<div align="left">
+						<ul>
+							<li>Vagrant is based on <i>box</i>es, simple images of VMs ready to go
+								<br>Find a base box: <a href="http://vagrantbox.es">http://vagrantbox.es</a>
+							</li>
+							<li>Once you have a box, you can start play the game
+								<br>
+								<pre><code>$ vagrant init precise32 http://files.vagrantup.com/precise32.box</code></pre>
+							</li>
+							<li>
+								Now you have a Vagrantfile in your project directory which contains the configuration.</li>
+							<li>Just run the VM and get its console access
+								<br>
+<pre><code>$ vagrant up
+[...]
+$ vagrant ssh<br></code></pre>
+							</li>
+							<li>Level complete! Well done
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Vagrant "how to"</h2>
+					<p>
+						<br>
+					</p>
+					<h3>Common commands</h3>
+					<div align="left">
+						<ul>
+							<li>
+								<b>vagrant init</b> → creates the configuration
+								<br>
+							</li>
+							<li>
+								<b>vagrant up</b> → starts/resumes the VM</li>
+							<li>
+								<b>vagrant ssh</b> → gives you access to a shell of VM
+								<br>
+							</li>
+							<li>
+								<b>vagrant suspend</b> → saves the current state of the VM (disk space required)</li>
+							<li>
+								<b>vagrant reload</b> → reboots the VM
+								<br>
+							</li>
+							<li>
+								<b>vagrant halt </b>→ graceful shutdown</li>
+							<li>
+								<b>vagrant destroy</b> → destroy the VM
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Vagrantfile</h2>
+					<div align="left">
+						<ul>
+							<li>Vagrant configuration file</li>
+							<li>First thing loaded by Vagrant</li>
+							<li>It's written in simple Ruby syntax
+								<br>
+<pre><code>Vagrant.configure("2") do |config|
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "precise32"
+
+  # The url from where the 'config.vm.box' box will be fetched if it
+  # doesn't already exist on the user's system.
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+end
+</code></pre>
+							</li>
+							<li>With the same Vagrantfile, two or more developers will have the same environment
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Vagrantfile - a real example</h2>
+					<p>
+						<br>
+					</p>
+<pre><code>Vagrant.configure("2") do |config|
+  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+
+  # config.vm.network :private_network, ip: "192.168.33.10"
+  # config.vm.network :public_network
+
+  config.vm.network :forwarded_port, guest: 8080, host: 8080 #tomee
+  config.vm.network :forwarded_port, guest: 3000, host: 3000 #rails
+  config.vm.network :forwarded_port, guest: 5432, host: 5432 #postgresql
+
+  config.vm.synced_folder "./www/", "/var/www", id: "vagrant-root", :mount_options =&gt; ["dmode=777", "fmode=777"]
+
+  config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm", :id, "--memory", 512]
+    v.customize ["modifyvm", :id, "--name", "SIW"]
+end
+</code></pre>
+
+
+
+					<br>
+				</section>
+				<section>
+					<br>
+					<br>
+					<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/matteomanchi/images/247525/wait.gif">
+					<br>
+					<br>
+					<h2 data-fragment-index="0" class="fragment">Questions?</h2>
+				</section>
+				<section>
+					<h2>Chef-Solo</h2>
+					<div align="left">
+						<ul>
+							<li>
+								<b>Chef</b> cooks a <i>recipe</i> from a <i>cookbook</i>
+							</li>
+							<li>It is a system to automate things that we do again and again</li>
+							<li>It is an independent software but it is supported by Vagrant</li>
+							<li>In our case we will use it to install and configure multiple recipes on the VM:
+								<br>
+							</li>
+							<ul>
+								<li>Java JDK</li>
+								<li>Tomee
+									<br>
+								</li>
+								<li>Postgresql 9.1</li>
+								<li>Ruby</li>
+								<li>Ruby on Rails
+									<br>
+								</li>
+							</ul>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Why chef-solo?</h2>
+					<p>
+						<br>
+					</p>
+					<div align="left">
+						<ul>
+							<li>Safe to re-run the script</li>
+							<li>Platform independent
+								<br>
+							</li>
+							<li>Rich collection of recipes from the community (800+)</li>
+							<li>It is FREE. It is an Open Source version of the enterprise chef-client.
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>How to use Chef-Solo with Vagrant</h2>
+					<div align="left">
+						<ul>
+							<li>Directory structure
+								<br>
+<pre><code>. // tree -L 2
+├── cookbooks
+│&nbsp;&nbsp; ├── apt
+│&nbsp;&nbsp; ├── build-essential
+│&nbsp;&nbsp; ├── java
+│&nbsp;&nbsp; ├── nodejs
+│&nbsp;&nbsp; ├── openssl
+│&nbsp;&nbsp; ├── postgresql
+│&nbsp;&nbsp; ├── rvm
+│&nbsp;&nbsp; └── tomee
+├── Vagrantfile
+└── www
+</code></pre>
+							</li>
+							<li>In <i>cookbooks</i> directory we will put our <i>recipes</i>
+							</li>
+							<li>Each recipe describes what instructions will have to be done.
+								<br>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>How to use Chef-Solo with Vagrant</h2>
+					<p>
+						<br>
+					</p>
+					<div align="left">
+						<ul>
+							<li>In our Vagrantfile we specify recipes which will be cooked...
+								<br>
+								<pre><code>  config.vm.provision :chef_solo do |chef|<br>      chef.add_recipe "apt"<br>      chef.add_recipe "openssl"<br>      chef.add_recipe "java"<br>      chef.add_recipe "postgresql"<br>      chef.add_recipe "postgresql::server"<br>      chef.add_recipe "rvm"<br>      chef.add_recipe "rvm::system"<br>      chef.add_recipe "rvm::vagrant"<br>      chef.add_recipe "nodejs"<br>      chef.add_recipe "tomee"<br>      #[...]<br></code></pre>
+							</li>
+
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>How to use Chef-Solo with Vagrant</h2>
+					<div align="left">
+						<ul>
+							<li>&nbsp;... with our variants ( parameters are exposed by recipes )
+								<br>
+<pre><code>  chef.json = {
+    :postgresql =&gt; {
+        :password =&gt; {
+            :postgres =&gt; "siw"
+        },
+        :version =&gt; "9.1",
+        :pg_hba =&gt; [{
+          :comment =&gt; '# External access',
+          :type =&gt; 'host',
+          :db =&gt; 'all',
+          :user =&gt; 'all',
+          :addr =&gt; '0.0.0.0/0',
+          :method =&gt; 'trust'
+        }],
+        :config =&gt; {
+            :ssl =&gt; 'false',
+            :listen_addresses =&gt; '*'
+        }
+    }
+  }
+end
+</code></pre>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>
+					<br>
+				</h2>
+					<h2>Thank you</h2>
+					<p>
+						<br>
+					</p>
+					<p>Matteo Manchi</p>
+					<p>matteo.manchi@gmail.com
+						<br>
+					</p>
+					<p>Twitter @matteomanchi
+						<br>
+					</p>
+					<p>http://github.com/Takeno
+						<br>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

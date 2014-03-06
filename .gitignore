@@ -1,1 +1,3 @@
 .vagrant
+*.scss
+.travis.yml
