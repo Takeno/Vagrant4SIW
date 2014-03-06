@@ -89,4 +89,9 @@ This problem is solved with the new version of project. To fix it without downlo
 
 #### Problem #6: *VM already provisioned run vagrant provision to force it*
 
-This **IS NOT** a problem. It will appear everytime you start a VM after the first because it means *you have already launched installation scripts successfully and if you want re-launch it intentionally run `vagrant provision`*
+This **IS NOT** an error. It will appear everytime you start a VM after the first because it means *you have already launched installation scripts successfully and if you want re-launch it intentionally run `vagrant provision`*
+
+
+#### Problem #7: *stdin: is not a tty*
+
+Like above: this **IS NOT** an error. Don't care about it.
