@@ -86,3 +86,7 @@ This error is caused by virtual machine which is not responding to Vagrant. To f
 This problem is solved with the new version of project. To fix it without downloading again the project, you have to make a directory called **lib** near **www**.
 
 **From command line - for all platforms:** `mkdir lib`
+
+#### Problem #6: *VM already provisioned run vagrant provision to force it*
+
+This **IS NOT** a problem. It will appear everytime you start a VM after the first because it means *you have already launched installation scripts successfully and if you want re-launch it intentionally run `vagrant provision`*
