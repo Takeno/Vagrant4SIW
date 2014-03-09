@@ -1,9 +1,26 @@
 #!upstart
-description "Tomee Server"
+description "Tomcat Server"
 
-start on startup
-stop on shutdown
-
+start on vagrant-mounted MOUNTPOINT=/opt/tomee/lib
+stop on runlevel [!2345]
 respawn
+respawn limit 10 5
 
-exec sh -c "<%= node[:tomee][:dir] %>/bin/startup.sh 2>&1 >> <%= node[:tomee][:dir] %>/vagrant.log"
+# run as non privileged user 
+# add user with this command:
+## adduser --system --ingroup www-data --home /opt/apache-tomcat apache-tomcat
+setuid vagrant
+setgid vagrant
+
+# paths:
+env JAVA_HOME="/usr/lib/jvm/java-6-openjdk-i386"
+env CATALINA_BASE="<%= node[:tomee][:dir] %>"
+env CATALINA_HOME="<%= node[:tomee][:dir] %>"
+env CATALINA_PID="<%= node[:tomee][:dir] %>/catalina.pid"
+
+exec $CATALINA_HOME/bin/catalina.sh start
+
+# cleanup temp directory after stop
+post-stop script 
+	rm -rf $CATALINA_HOME/temp/*
+end script
