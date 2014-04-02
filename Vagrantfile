@@ -31,6 +31,9 @@ Vagrant.configure("2") do |config|
       chef.add_recipe "tomee"
 
       chef.json = {
+        :java => {
+          :jdk_version => '7'
+        },
         :postgresql => {
             :password => {
                 :postgres => "siw"
