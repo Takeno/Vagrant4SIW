@@ -5,7 +5,7 @@ end
 directory node[:tomee][:dir] do
   owner "vagrant"
   mode "0755"
-  action :create
+  action :create_if_missing
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/tomee.tar.gz" do
