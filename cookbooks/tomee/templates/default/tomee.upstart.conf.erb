@@ -13,7 +13,6 @@ setuid vagrant
 setgid vagrant
 
 # paths:
-env JAVA_HOME="/usr/lib/jvm/java-6-openjdk-i386"
 env CATALINA_BASE="<%= node[:tomee][:dir] %>"
 env CATALINA_HOME="<%= node[:tomee][:dir] %>"
 env CATALINA_PID="<%= node[:tomee][:dir] %>/catalina.pid"
