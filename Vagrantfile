@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   
   config.ssh.forward_agent = true
 
-  config.vm.synced_folder "./www/", "/var/www", id: "vagrant-root", :mount_options => ["dmode=777", "fmode=777"]
+  #config.vm.synced_folder "./www/", "/var/www", id: "vagrant-root", :mount_options => ["dmode=777", "fmode=777"]
   config.vm.synced_folder "./lib/", "/opt/tomee/lib", id: "vagrant-root", :mount_options => ["dmode=777", "fmode=777"]
 
   config.vm.provider :virtualbox do |v|
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
         },
         :tomee => {
           :dir => '/opt/tomee',
-          :working_dir => '/var/www/java',
+          :working_dir => '/vagrant/www/java',
           :src_link => 'http://archive.apache.org/dist/tomee/tomee-1.5.2/apache-tomee-1.5.2-jaxrs.tar.gz'
         }
       }
