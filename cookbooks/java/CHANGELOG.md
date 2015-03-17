@@ -2,6 +2,200 @@ Java Cookbook CHANGELOG
 =======================
 This file is used to list changes made in each version of the Java cookbook.
 
+v1.30 - 2/3/2015
+-------
+- Update to latest JDKs for 7 and 8. JDK7 will be EOL April 2015
+- Fix up Travis support.
+- Add ability to install JCE policy files for oracle JDK #228
+- Change connect timeout to 30 seconds
+
+v1.29.0 - 11/14/2014
+-------
+### Bug
+- **[#216](https://github.com/agileorbit-cookbooks/java/pull/216)** - Ensure dirs, links, and jinfo files are owned correctly
+- **[#217](https://github.com/agileorbit-cookbooks/java/pull/217)** - Update to Oracle JDK 8u25
+- **[#214](https://github.com/agileorbit-cookbooks/java/pull/214)** - Update to Oracle JDK 7u71-b14
+
+### Improvement
+- Adding a connect_timeout option for downloading java.
+
+### Misc
+- Switched to chef-zero provisioner in test suites.
+- Adding ISSUES.md for guidance on creating new issues for the Java cookbook.
+- Fix IBM unit tests.
+
+v1.28.0 - 9/6/2014
+-------
+### Improvement
+- Allow setting of group to extracted java files.
+
+### Bug
+- Add -no-same-owner parameter to tar extract to avoid issues when the chef cache dir is on an NFS mounted drive.
+- In the ark provider, it doesn't compare the MD5 sum with the right value which causes Java cookbook always download tarball from oracle server
+
+v1.27.0 - 8/22/2014
+-------
+- Update Oracle JDK8 to version 8u20
+
+v1.26.0 - 8/16/2014
+-------
+- **[#201](https://github.com/agileorbit-cookbooks/java/pull/201)** - Allow pinning of package versions for openjdk
+- **[#198](https://github.com/agileorbit-cookbooks/java/pull/198)** - Update Oracle JDK7 to version 7u67
+- **[#189](https://github.com/agileorbit-cookbooks/java/pull/184)** - Support specific version and name for Oracle RPM
+
+v1.25.0 - 8/1/2014
+-------
+### Improvement
+- **[#189](https://github.com/agileorbit-cookbooks/java/pull/189)** - Resource ark -> attribute bin_cmds default value
+- **[#168](https://github.com/agileorbit-cookbooks/java/pull/168)** - Add option to put JAVA_HOME in /etc/environment
+- **[#172](https://github.com/agileorbit-cookbooks/java/pull/172)** - Allow ark to pull from http and files ending in .gz.
+
+### Documentation
+- Recommendations for inclusion in community cookbooks
+- Production Deployment with Oracle Java
+- Update testing instructions for chefdk
+- Various Readme formatting.
+
+### Misc
+- Use Supermarket endpoint in berksfile
+- rspec cleanup
+- Adding ubuntu-14.04 to test suite
+
+v1.24.0 - 7/25/2014
+-------
+New Cookbook maintainer! **[Agile Orbit](http://agileorbit.com)**
+
+### Improvement
+- **[#192](https://github.com/agileorbit-cookbooks/java/pull/192)** - Bump JDK7 URLs to 7u65
+- **[#191](https://github.com/agileorbit-cookbooks/java/pull/192)** - Upgrade Oracle's Java 8 to u11
+- **[#188](https://github.com/agileorbit-cookbooks/java/pull/188)** - Allow for alternatives priority to be set from attribute.
+- **[#176](https://github.com/agileorbit-cookbooks/java/pull/176)** - Change ownership of extracted files
+- **[#169](https://github.com/agileorbit-cookbooks/java/pull/169)** - Add retries and retry_delay parameters to java_ark LWRP
+- **[#167](https://github.com/agileorbit-cookbooks/java/pull/167)** - default: don't fail when using java 8 on windows
+- **[#165](https://github.com/agileorbit-cookbooks/java/pull/165)** - Support for Server JRE
+- **[#158](https://github.com/agileorbit-cookbooks/java/pull/158)** - Updated README for accepting oracle terms
+- **[#157](https://github.com/agileorbit-cookbooks/java/pull/157)** -Remove VirtualBox specific box_urls
+- List AgileOrbit as the maintainer (AgileOrbit took over from Socrata in July 2014)
+
+v1.23.0 - 7/25/2014
+-------
+- Tagged but never published to community cookbooks. All changes rolled into 1.24.0
+
+v1.22.0
+-------
+### Improvement
+- **[#148](https://github.com/socrata-cookbooks/java/pull/148)** - Add support for Oracle JDK 1.8.0
+- **[#150](https://github.com/socrata-cookbooks/java/pull/150)** - Make use of Chef's cache directory instead of /tmp
+- **[#151](https://github.com/socrata-cookbooks/java/pull/151)** - Update Test Kitchen suites
+- **[#154](https://github.com/socrata-cookbooks/java/pull/154)** - Add safety check for JDK 8 on non-Oracle
+
+v1.21.2
+-------
+### Bug
+- **[#146](https://github.com/socrata-cookbooks/java/pull/146)** - Update Oracle accept-license-terms cookie format
+
+v1.21.0
+-------
+### Improvement
+- **[#143](https://github.com/socrata-cookbooks/java/pull/143)** - Symlink /usr/lib/jvm/default-java for both OpenJDK and Oracle
+- **[#144](https://github.com/socrata-cookbooks/java/pull/144)** - Remove /var/lib/alternatives/#{cmd} before calling alternatives (Hopefully fixes sporadic issues when setting alternatives)
+- **[Make default_java_symlink conditional on set_default attribute](https://github.com/socrata-cookbooks/java/commit/e300e235a463382a5022e1dddaac674930b4d138)**
+
+v1.20.0
+-------
+### Improvement
+- **[#137](https://github.com/socrata-cookbooks/java/pull/137)** - Create /usr/lib/jvm/default-java on Debian
+- **[#138](https://github.com/socrata-cookbooks/java/pull/138)** - allow wrapping cookbook without providing templates
+- **[#140](https://github.com/socrata-cookbooks/java/pull/140)** - Adds set_default attribute to toggle setting JDK as default
+
+### Bug
+- **[#141](https://github.com/socrata-cookbooks/java/pull/141)** - set java_home correctly for oracle_rpm
+
+v1.19.2
+-------
+### Improvement
+- **[#129](https://github.com/socrata-cookbooks/java/pull/129)** - Upgrade to ChefSpec 3
+- Rewrite unit tests for better coverage and to work with ChefSpec 3 (various commits)
+- List Socrata as the maintainer (Socrata took over from Opscode in December 2013)
+
+### Bug
+- **[#133](https://github.com/socrata-cookbooks/java/pull/133)** - Allow jdk_version to be a string or number
+- **[#131](https://github.com/socrata-cookbooks/java/pull/131)** - Fix JDK install on Windows
+- **[Fix openjdk_packages on Arch Linux](https://github.com/socrata-cookbooks/java/commit/677bee7b9bf08988596d40ac65e75984a86bda99)**
+
+v1.19.0
+-------
+Refactor the cookbook to better support wrapper cookbooks and other cookbook authoring patterns.
+### Improvement
+- **[#123](https://github.com/socrata-cookbooks/java/pull/123)** - Update documentation & add warning for issue 122
+- **[#124](https://github.com/socrata-cookbooks/java/pull/124)** - Refactor default recipe to better enable wrapper cookbooks
+- **[#125](https://github.com/socrata-cookbooks/java/pull/125)** - Removes the attribute to purge deprecated packages
+- **[#127](https://github.com/socrata-cookbooks/java/pull/127)** - Add safety check if attributes are unset
+- **[Adds tests for directly using openjdk and oracle recipes](https://github.com/socrata-cookbooks/java/commit/794df596959d65a1a6d5f6c52688bffd8de6bff4)**
+- **[Adds recipes to README](https://github.com/socrata-cookbooks/java/commit/76d52114bb9df084174d43fed143123b1cdbae16)**
+- **[The Opscode CCLA is no longer required](https://github.com/socrata-cookbooks/java/commit/ce4ac25caa8383f185c25c4e32cafef8c0453376)**
+- **[Adds tests for openjdk-7 and oracle-7](https://github.com/socrata-cookbooks/java/commit/9c38af241f68b3198cde4ad6fe2b4cb752062009)**
+
+
+### Bug
+- **[#119](https://github.com/socrata-cookbooks/java/pull/119)** - Use java_home instead of java_location for update-alternatives
+- **[Fix java_home for rhel and fedora](https://github.com/socrata-cookbooks/java/commit/71dadbd1bfe2eab50ff21cdab4ded97877911cc4)**
+
+v1.18.0
+-------
+### Improvement
+- **[#118](https://github.com/socrata-cookbooks/java/pull/118)** - Upgrade to 7u51
+- **[#117](https://github.com/socrata-cookbooks/java/pull/117)** - Suggest windows and aws
+
+v1.17.6
+-------
+### Bug
+- Revert **[COOK-4165](https://tickets.opscode.com/browse/COOK-4165)** - The headers option was only added to remote_file in Chef 11.6.0, meaning this change breaks older clients.
+
+v1.17.4
+-------
+### Bug
+- **[#111](https://github.com/socrata-cookbooks/java/pull/111)** - Fix alternatives for centos
+
+### Improvement
+- **[COOK-4165](https://tickets.opscode.com/browse/COOK-4165)** - Replace curl with remote_file with cookie header
+- **[#110](https://github.com/socrata-cookbooks/java/pull/110)** - Update openjdk to use the alternatives resource
+
+v1.17.2
+-------
+### Bug
+- **[COOK-4136](https://tickets.opscode.com/browse/COOK-4136)** - Add md5 parameter to java_ark resource
+
+
+v1.17.0
+-------
+- **[COOK-4114](https://tickets.opscode.com/browse/COOK-4114)** - Test Kitchen no longer works after merging Pull Request #95 for openjdk tests on Debian/Ubuntu
+- **[COOK-4124](https://tickets.opscode.com/browse/COOK-4124)** - update-alternatives fails to run
+- **[#81](https://github.com/socrata/java/pull/81)** - Ensure local directory hierarchy
+- **[#97](https://github.com/socrata/java/pull/97)** - Expose LWRP state attributes
+- **[#99](https://github.com/socrata/java/pull/99)** - support for MD5 checksum
+- **[#106](https://github.com/socrata/java/pull/106)** - Fixed windows case to prevent bad java_home variable setting
+- **[Update checksums to the officially-published ones from Oracle](https://github.com/socrata/java/commit/b9e1df24caeb6e22346d2d415b3b4384f15d4ffd)**
+- **[Further test kitchen fixes to use the default recipe](https://github.com/socrata/java/commit/01c0b432705d9cfa6d2dfeaa380983e3f604069f)**
+
+v1.16.4
+-------
+### Bug
+- **[#103](https://github.com/socrata/java/pull/103)** - set alternatives when using ibm_tar recipe
+- **[#104](https://github.com/socrata/java/pull/104)** - Specify windows attributes in attribute files
+
+v1.16.2
+-------
+### Improvement
+- **[COOK-3488](https://tickets.opscode.com/browse/COOK-3488)** - set alternatives for ibm jdk
+- **[COOK-3764](https://tickets.opscode.com/browse/COOK-3764)** - IBM Java installer needs 'rpm' package on Ubuntu
+
+### Bug
+- **[COOK-3857](https://tickets.opscode.com/browse/COOK-3857)** - do not unescape the java windows url before parsing it
+- **[#95](https://github.com/socrata/java/pull/95)** - fixes update-alternatives for openjdk installs
+- **[#100](https://github.com/socrata/java/pull/100)** - Use escaped quotes for Windows INSTALLDIR
+
+
 v1.16.0
 -------
 ### Improvement

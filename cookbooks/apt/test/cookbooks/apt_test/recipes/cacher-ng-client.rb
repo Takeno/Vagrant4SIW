@@ -2,7 +2,7 @@
 # Cookbook Name:: apt_test
 # Recipe:: cacher-ng-client
 #
-# Copyright 2013, Opscode, Inc.
+# Copyright 2013, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-include_recipe "apt::cacher-ng"
-include_recipe "apt::cacher-client"
+include_recipe 'apt::cacher-ng'
+include_recipe 'apt::cacher-client'
 
-#install a small, innocuous application to verify this works
-package "colordiff"
+# install a small, innocuous application to verify this works
+package 'colordiff'

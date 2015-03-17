@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   #config.vm.network :private_network, ip: "192.168.255.4"
   config.vm.network :forwarded_port, guest: 8080, host: 8080 #tomee
-  config.vm.network :forwarded_port, guest: 3000, host: 3000 #rails
+  config.vm.network :forwarded_port, guest: 3000, host: 3001 #rails
   config.vm.network :forwarded_port, guest: 5432, host: 5432 #postgresql
   
   config.ssh.forward_agent = true
@@ -14,21 +14,18 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.customize ["modifyvm", :id, "--memory", 512]
+    v.customize ["modifyvm", :id, "--memory", 512] # RAM
     v.customize ["modifyvm", :id, "--name", "SIW"]
   end
 
   config.vm.provision :chef_solo do |chef|
       chef.add_recipe "apt"
       chef.add_recipe "openssl"
-      chef.add_recipe "java"
+      chef.add_recipe "java::default"
       chef.add_recipe "postgresql"
       chef.add_recipe "postgresql::server"
-      chef.add_recipe "rvm"
-      chef.add_recipe "rvm::system"
-      chef.add_recipe "rvm::vagrant"
-      chef.add_recipe "nodejs"
       chef.add_recipe "tomee"
+
 
       chef.json = {
         :java => {
@@ -52,17 +49,18 @@ Vagrant.configure("2") do |config|
                 :listen_addresses => '*'
             }
         },
-        :nodejs => {
-          :install_method => 'package'
-        },
         :tomee => {
           :dir => '/opt/tomee',
           :working_dir => '/vagrant/www/java',
-          :src_link => 'http://archive.apache.org/dist/tomee/tomee-1.5.2/apache-tomee-1.5.2-jaxrs.tar.gz'
+          :src_link => 'http://archive.apache.org/dist/tomee/tomee-1.7.1/apache-tomee-1.7.1-jaxrs.tar.gz'
         }
       }
   end
 
-  config.vm.provision :shell, :inline => "echo 'Installing rails... ' && if [[ ! -f `which rails` ]]; then gem install rails; fi"
-
+  # Installing ruby2.2
+  # config.vm.provision :shell, :inline => "echo 'Installing ruby 2.2... ' && su - vagrant rvm install 2.2.1"
+  # config.vm.provision :shell, :inline => "su - vagrant 'rvm --default use 2.2.1'"
+  # # Installing rails
+  # config.vm.provision :shell, :inline => "echo 'Installing rails... ' && if [[ ! -f `which rails` ]]; then gem install rails; fi"
+  config.vm.provision :shell, :path => "./install-ruby.sh"
 end

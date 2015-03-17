@@ -2,7 +2,7 @@
 # Cookbook Name:: apt_test
 # Recipe:: default
 #
-# Copyright 2012, Opscode, Inc.
+# Copyright 2012, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@
 
 require File.expand_path('../support/helpers', __FILE__)
 
-describe "apt_test::default" do
+describe 'apt_test::default' do
   include Helpers::AptTest
 
   it 'runs the cacher service' do
-    service("apt-cacher-ng").must_be_running
+    service('apt-cacher-ng').must_be_running
   end
 end

@@ -2,7 +2,7 @@
 # Cookbook Name:: apt_test
 # Recipe:: lwrps
 #
-# Copyright 2012, Opscode, Inc.
+# Copyright 2012, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,30 +19,30 @@
 
 require File.expand_path('../support/helpers', __FILE__)
 
-describe "apt_test::lwrps" do
+describe 'apt_test::lwrps' do
   include Helpers::AptTest
 
-  it 'creates the Opscode sources.list' do
-    file("/etc/apt/sources.list.d/opscode.list").must_exist
+  it 'creates the Chef Software sources.list' do
+    file('/etc/apt/sources.list.d/chef.list').must_exist
   end
 
-  it 'adds the Opscode package signing key' do
-    opscode_key = shell_out("apt-key list")
-    assert opscode_key.stdout.include?("Opscode Packages <packages@opscode.com>")
+  it 'adds the Chef Software package signing key' do
+    chef_key = shell_out('apt-key list')
+    assert chef_key.stdout.include?('Chef Software Packages <packages@chef.io>')
   end
 
   it 'creates the correct pinning preferences for chef' do
-    pinning_prefs = "Package: chef\nPin: version 10.16.2-1"
-    file("/etc/apt/preferences.d/chef").must_match(/#{pinning_prefs}/)
+    pinning_prefs = 'Package: chef\nPin: version 10.16.2-1'
+    file('/etc/apt/preferences.d/chef').must_match(/#{pinning_prefs}/)
   end
 
   it 'creates a repo with an architecture' do
-    cloudera = "deb\s+\\[arch=amd64\\] http://archive.cloudera.com/cdh4/ubuntu/precise/amd64/cdh precise-cdh4 contrib"
-    file("/etc/apt/sources.list.d/cloudera.list").must_match(/#{cloudera}/)
+    cloudera = 'deb\s+\\[arch=amd64\\] http://archive.cloudera.com/cdh4/ubuntu/precise/amd64/cdh precise-cdh4 contrib'
+    file('/etc/apt/sources.list.d/cloudera.list').must_match(/#{cloudera}/)
   end
 
   it 'creates the correct pinning preferences with a glob' do
-    pinning_prefs = "Package: \\*\nPin: origin packages.dotdeb.org"
-    file("/etc/apt/preferences.d/dotdeb").must_match(/#{pinning_prefs}/)
+    pinning_prefs = 'Package: \\*\nPin: origin packages.dotdeb.org'
+    file('/etc/apt/preferences.d/dotdeb').must_match(/#{pinning_prefs}/)
   end
 end

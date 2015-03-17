@@ -2,7 +2,7 @@
 # Cookbook Name:: apt
 # Library:: helpers
 #
-# Copyright 2013 Opscode, Inc.
+# Copyright 2013 Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 #
 
 module Apt
+  # Helpers for apt
   module Helpers
     # Determines if apt is installed on a system.
     #
@@ -30,6 +31,7 @@ module Apt
     #
     # @return [String, nil]
     def which(cmd)
+      ENV["PATH"] = "" if ENV["PATH"].nil?
       paths = (ENV['PATH'].split(::File::PATH_SEPARATOR) + %w(/bin /usr/bin /sbin /usr/sbin))
 
       paths.each do |path|

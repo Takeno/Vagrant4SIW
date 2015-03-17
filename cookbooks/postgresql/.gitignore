@@ -1,5 +1,6 @@
 .vagrant
 Berksfile.lock
+Cheffile.lock
 Gemfile.lock
 *~
 *#
@@ -12,3 +13,6 @@ Gemfile.lock
 .kitchen
 bin
 .kitchen.local.yml
+.kitchen/
+.librarian/
+tmp/
